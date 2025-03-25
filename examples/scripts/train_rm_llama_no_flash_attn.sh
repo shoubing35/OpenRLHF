@@ -18,7 +18,6 @@ openrlhf.cli.train_rm \
    --apply_chat_template \
    --chosen_key chosen \
    --rejected_key rejected \
-#   --flash_attn \ # removed due to its incompatibility with python 3.11
    --load_checkpoint \
    --gradient_checkpointing
 EOF
