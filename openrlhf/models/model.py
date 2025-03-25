@@ -3,7 +3,7 @@ from typing import Optional, Union
 import deepspeed
 import torch
 import torch.nn as nn
-from flash_attn.utils.distributed import all_gather
+# from flash_attn.utils.distributed import all_gather # removed due to incompatibility with python 3.11
 from peft import LoraConfig, get_peft_model
 from peft.tuners.lora import LoraLayer
 from transformers import AutoConfig, AutoModel, BitsAndBytesConfig
