@@ -6,16 +6,16 @@ openrlhf.cli.train_rm \
    --save_steps -1 \
    --logging_steps 1 \
    --eval_steps -1 \
-   --train_batch_size 256 \
+   --train_batch_size 1 \
    --micro_train_batch_size 1 \
    --pretrain OpenRLHF/Llama-3-8b-sft-mixture \
    --bf16 \
    --max_epochs 1 \
-   --max_len 8192 \
+   --max_len 2048 \
+   --max_samples 10 \
    --zero_stage 3 \
    --learning_rate 9e-6 \
    --dataset /content/drive/MyDrive/Colab_Notebooks/preference_dataset_10.csv \
-   --dataset_format csv \
    --apply_chat_template \
    --chosen_key chosen \
    --rejected_key rejected \
