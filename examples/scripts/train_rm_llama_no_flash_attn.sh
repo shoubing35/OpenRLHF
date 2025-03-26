@@ -14,7 +14,8 @@ openrlhf.cli.train_rm \
    --max_len 8192 \
    --zero_stage 3 \
    --learning_rate 9e-6 \
-   --dataset OpenRLHF/preference_dataset_mixture2_and_safe_pku \
+   --dataset /content/drive/MyDrive/Colab_Notebooks/preference_dataset_10.csv \
+   --dataset_format csv \
    --apply_chat_template \
    --chosen_key chosen \
    --rejected_key rejected \
