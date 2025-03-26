@@ -15,7 +15,7 @@ openrlhf.cli.train_rm \
    --max_samples 10 \
    --zero_stage 3 \
    --learning_rate 9e-6 \
-   --dataset /content/drive/MyDrive/Colab_Notebooks/preference_dataset_10 \
+   --dataset OpenRLHF/preference_dataset_mixture2_and_safe_pku \
    --apply_chat_template \
    --chosen_key chosen \
    --rejected_key rejected \
