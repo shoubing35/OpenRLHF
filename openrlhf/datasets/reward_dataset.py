@@ -104,7 +104,7 @@ class RewardDataset(Dataset):
         #     print(f"prompts = {self.prompts}")
 
         # Store the processed data in class attributes
-        print(f"prompts = {self.prompts}")
+        print(f"prompts = {self.prompts if self.prompts else None}")
         print(f"processed_dataset[0] = {processed_dataset[0]}")
         self.prompts = processed_dataset["prompt"] # Charles edit 3/26: handled by the code above
         self.chosens = processed_dataset["chosen"]
