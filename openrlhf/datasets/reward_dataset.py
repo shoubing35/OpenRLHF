@@ -110,6 +110,7 @@ class RewardDataset(Dataset):
         self.chosens = processed_dataset["chosen"]
         self.rejects = processed_dataset["reject"]
         self.extras = processed_dataset["extra"]
+        print(f"processing complete") # charles
 
     def process_data(self, data):
         print("starting preprocessing...")  # charles
