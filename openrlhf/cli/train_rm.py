@@ -43,6 +43,7 @@ def train(args):
     optim = strategy.create_optimizer(model, lr=args.learning_rate, betas=args.adam_betas, weight_decay=args.l2)
 
     # prepare for data and dataset
+    print("blending datasets...")
     train_data, eval_data = blending_datasets(
         args.dataset,
         args.dataset_probs,
@@ -53,6 +54,7 @@ def train(args):
         train_split=args.train_split,
         eval_split=args.eval_split,
     )
+    print("blended datasets successfully")
     train_data = train_data.select(range(min(args.max_samples, len(train_data))))
     eval_data = eval_data.select(range(min(args.max_samples, len(eval_data))))
     print(f"train_data[0] = {train_data[0]}") # charles
