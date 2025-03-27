@@ -237,7 +237,10 @@ if __name__ == "__main__":
     )
     parser.add_argument("--tokenizer_chat_template", type=str, default=None)
     parser.add_argument("--train_split", type=str, default="train", help="train split of the HF dataset")
-    parser.add_argument("--eval_split", type=str, default="test", help="test split of the dataset")
+
+    # charles updated "test" to "train"
+    parser.add_argument("--eval_split", type=str, default="train", help="test split of the dataset")
+
     parser.add_argument("--max_samples", type=int, default=1e8, help="Max number of samples")
     parser.add_argument("--max_len", type=int, default=512)
 
