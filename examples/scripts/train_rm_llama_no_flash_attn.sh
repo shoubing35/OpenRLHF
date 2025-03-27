@@ -9,7 +9,6 @@ openrlhf.cli.train_rm \
    --train_batch_size 1 \
    --micro_train_batch_size 1 \
    --pretrain OpenRLHF/Llama-3-8b-sft-mixture \
-   --bf16 \
    --max_epochs 1 \
    --max_len 2048 \
    --max_samples 10 \
