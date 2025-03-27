@@ -55,6 +55,8 @@ def train(args):
     )
     train_data = train_data.select(range(min(args.max_samples, len(train_data))))
     eval_data = eval_data.select(range(min(args.max_samples, len(eval_data))))
+    print(f"train_data[0] = {train_data[0]}") # charles
+    print(f"eval_data[0] = {eval_data[0]}") # charles
     train_dataset = RewardDataset(
         train_data,
         tokenizer,
@@ -63,7 +65,7 @@ def train(args):
         input_template=args.input_template,
         multiple_of=args.ring_attn_size,
     )
-    print("created train_dataset successfully")
+    print("created train_dataset successfully") # charles
     eval_dataset = RewardDataset(
         eval_data,
         tokenizer,
@@ -72,7 +74,7 @@ def train(args):
         input_template=args.input_template,
         multiple_of=args.ring_attn_size,
     )
-    print("created eval_dataset successfully")
+    print("created eval_dataset successfully") # charles
 
     train_dataloader = strategy.setup_dataloader(
         train_dataset,
