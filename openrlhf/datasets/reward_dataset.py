@@ -104,14 +104,15 @@ class RewardDataset(Dataset):
         #     print(f"prompts = {self.prompts}")
 
         # Store the processed data in class attributes
-        print(f"prompts = {self.prompts if self.prompts else None}")
-        print(f"processed_dataset[0] = {processed_dataset[0]}")
+        # print(f"prompts = {self.prompts if self.prompts else None}")
+        print(f"processed_dataset[0] = {processed_dataset[0]}") # charles
         self.prompts = processed_dataset["prompt"] # Charles edit 3/26: handled by the code above
         self.chosens = processed_dataset["chosen"]
         self.rejects = processed_dataset["reject"]
         self.extras = processed_dataset["extra"]
 
     def process_data(self, data):
+        print("starting preprocessing...")  # charles
         prompt, chosen, reject, margin = preprocess_data(
             data,
             self.input_template,
@@ -121,6 +122,7 @@ class RewardDataset(Dataset):
             self.apply_chat_template,
             self.is_dpo,
         )
+        print("preprocessed successfully") # charles
 
         if self.is_dpo:
             prompt_token = self.tokenizer(
