@@ -93,10 +93,16 @@ class RewardDataset(Dataset):
         )
 
         # Filter out None values if necessary
-        processed_dataset = processed_dataset.filter(lambda x: x["prompt"] is not None)
+        # Charles edit 3/26/25
+        if self.prompt_key or (self.is_dpo and not self.apply_chat_template):
+            processed_dataset = processed_dataset.filter(lambda x: x["prompt"] is not None)
+        if "prompt" in processed_dataset.column_names:
+            self.prompts = processed_dataset["prompt"]
+        else:
+            self.prompts = ["" for _ in range(len(processed_dataset))]
 
         # Store the processed data in class attributes
-        self.prompts = processed_dataset["prompt"]
+        # self.prompts = processed_dataset["prompt"] # Charles edit 3/26: handled by the code above
         self.chosens = processed_dataset["chosen"]
         self.rejects = processed_dataset["reject"]
         self.extras = processed_dataset["extra"]
