@@ -22,7 +22,7 @@ openrlhf.cli.train_rm \
    --load_checkpoint \
    --gradient_checkpointing \
    --load_in_4bit \
-   --lora_rank 16 \
+   --lora_rank 16
 EOF
      # --use_wandb [WANDB_TOKENS] or True (use wandb login command)
      # --packing_samples
