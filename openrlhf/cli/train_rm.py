@@ -55,6 +55,8 @@ def train(args):
         eval_split=args.eval_split,
     )
     print("blended datasets successfully")
+    print(f"✅ train_data size = {len(train_data)}")
+    print(f"✅ eval_data size = {len(eval_data)}")
     train_data = train_data.select(range(min(args.max_samples, len(train_data))))
     eval_data = eval_data.select(range(min(args.max_samples, len(eval_data))))
     print(f"train_data[0] = {train_data[0]}") # charles
