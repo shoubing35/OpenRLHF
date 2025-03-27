@@ -12,7 +12,7 @@ openrlhf.cli.train_rm \
    --max_epochs 1 \
    --max_len 2048 \
    --max_samples 10 \
-   --zero_stage 3 \
+   --zero_stage 2 \
    --learning_rate 9e-6 \
    --dataset OpenRLHF/preference_dataset_mixture2_and_safe_pku \
    --apply_chat_template \
@@ -20,9 +20,7 @@ openrlhf.cli.train_rm \
    --rejected_key rejected \
    --load_checkpoint \
    --gradient_checkpointing \
-   --bf16 \
-   --load_in_8bit \
-   --lora_rank 32
+   --bf16
 EOF
      # --use_wandb [WANDB_TOKENS] or True (use wandb login command)
      # --packing_samples
