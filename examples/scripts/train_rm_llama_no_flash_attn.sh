@@ -20,7 +20,8 @@ openrlhf.cli.train_rm \
    --rejected_key rejected \
    --load_checkpoint \
    --gradient_checkpointing \
-   --bf16
+   --bf16 \
+   --adam_offload
 EOF
      # --use_wandb [WANDB_TOKENS] or True (use wandb login command)
      # --packing_samples
