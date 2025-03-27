@@ -20,7 +20,9 @@ openrlhf.cli.train_rm \
    --chosen_key chosen \
    --rejected_key rejected \
    --load_checkpoint \
-   --gradient_checkpointing
+   --gradient_checkpointing \
+   --load_in_4bit \
+   --lora_rank 16 \
 EOF
      # --use_wandb [WANDB_TOKENS] or True (use wandb login command)
      # --packing_samples
