@@ -88,22 +88,25 @@ class RewardDataset(Dataset):
                 self.tokenizer.chat_template = tokenizer_chat_template
 
         # Parallel loading datasets
+        print(f"dataset[0] = {dataset[0]}") # charles
         processed_dataset = dataset.map(
             self.process_data, remove_columns=dataset.column_names, num_proc=num_processors
         )
 
         # Filter out None values if necessary
         # Charles edit 3/26/25
-        if self.prompt_key or (self.is_dpo and not self.apply_chat_template):
-            processed_dataset = processed_dataset.filter(lambda x: x["prompt"] is not None)
-        if "prompt" in processed_dataset.column_names:
-            self.prompts = processed_dataset["prompt"]
-        else:
-            self.prompts = ["" for _ in range(len(processed_dataset))]
-            print(f"prompts = {self.prompts}")
+        # if self.prompt_key or (self.is_dpo and not self.apply_chat_template):
+        #     processed_dataset = processed_dataset.filter(lambda x: x["prompt"] is not None)
+        # if "prompt" in processed_dataset.column_names:
+        #     self.prompts = processed_dataset["prompt"]
+        # else:
+        #     self.prompts = ["" for _ in range(len(processed_dataset))]
+        #     print(f"prompts = {self.prompts}")
 
         # Store the processed data in class attributes
-        # self.prompts = processed_dataset["prompt"] # Charles edit 3/26: handled by the code above
+        print(f"prompts = {self.prompts}")
+        print(f"processed_dataset[0] = {processed_dataset[0]}")
+        self.prompts = processed_dataset["prompt"] # Charles edit 3/26: handled by the code above
         self.chosens = processed_dataset["chosen"]
         self.rejects = processed_dataset["reject"]
         self.extras = processed_dataset["extra"]
