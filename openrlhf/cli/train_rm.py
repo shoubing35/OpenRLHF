@@ -63,6 +63,7 @@ def train(args):
         input_template=args.input_template,
         multiple_of=args.ring_attn_size,
     )
+    print("created train_dataset successfully")
     eval_dataset = RewardDataset(
         eval_data,
         tokenizer,
@@ -71,6 +72,7 @@ def train(args):
         input_template=args.input_template,
         multiple_of=args.ring_attn_size,
     )
+    print("created eval_dataset successfully")
 
     train_dataloader = strategy.setup_dataloader(
         train_dataset,
