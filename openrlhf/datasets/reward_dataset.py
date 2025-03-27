@@ -100,6 +100,7 @@ class RewardDataset(Dataset):
             self.prompts = processed_dataset["prompt"]
         else:
             self.prompts = ["" for _ in range(len(processed_dataset))]
+            print(f"prompts = {self.prompts}")
 
         # Store the processed data in class attributes
         # self.prompts = processed_dataset["prompt"] # Charles edit 3/26: handled by the code above
