@@ -148,8 +148,9 @@ def train(args):
     unwrap_model.config.value_head_prefix = args.value_head_prefix
 
     # save model checkpoint after fitting on only rank0
-    strategy.save_model(model, tokenizer, args.save_path)
-
+    # strategy.save_model(model, tokenizer, args.save_path) # charles removed
+    model.save_pretrained(args.save_path) # charles added
+    tokenizer.save_pretrained(args.save_path) # charles added
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
