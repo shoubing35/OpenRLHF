@@ -32,6 +32,7 @@ def train(args):
         init_value_head=True,
         value_head_prefix=args.value_head_prefix,
         packing_samples=args.packing_samples,
+        is_rm=True, # charles
     )
 
     # configure tokenizer
