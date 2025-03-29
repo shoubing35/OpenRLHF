@@ -20,7 +20,8 @@ def train(args):
     # load huggingface model/config
     model = get_llm_for_sequence_regression(
         args.pretrain,
-        "reward",
+        # "reward", # charles comment out
+        model_type="reward", # charles
         use_flash_attention_2=args.flash_attn,
         bf16=args.bf16,
         load_in_4bit=args.load_in_4bit,
@@ -32,7 +33,7 @@ def train(args):
         init_value_head=True,
         value_head_prefix=args.value_head_prefix,
         packing_samples=args.packing_samples,
-        is_rm=True, # charles
+        # is_rm=True, # charles
     )
 
     # configure tokenizer
