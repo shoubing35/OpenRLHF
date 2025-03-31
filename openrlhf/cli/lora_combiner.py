@@ -3,13 +3,27 @@ import argparse
 import torch
 from peft import PeftModel
 from transformers import AutoModelForCausalLM, AutoModelForSequenceClassification, AutoTokenizer
-
+from openrlhf.models import get_llm_for_sequence_regression # charles: match base with reward model used in training
 
 def apply_lora(model_name_or_path, lora_path, output_path, is_rm, bf16):
     print(f"Loading the base model from {model_name_or_path}")
-    model_cls = AutoModelForCausalLM if not is_rm else AutoModelForSequenceClassification
-    base = model_cls.from_pretrained(
-        model_name_or_path, torch_dtype=torch.bfloat16 if bf16 else "auto", low_cpu_mem_usage=True
+
+    # Charles: commented out previous incompatible base model
+    # model_cls = AutoModelForCausalLM if not is_rm else AutoModelForSequenceClassification
+    # base = model_cls.from_pretrained(
+    #     model_name_or_path, torch_dtype=torch.bfloat16 if bf16 else "auto", low_cpu_mem_usage=True
+    # )
+
+    # charles: match base with reward model used in training
+    base = get_llm_for_sequence_regression(
+        model_name_or_path,
+        model_type="reward",  # or "critic" if needed
+        bf16=bf16,
+        lora_rank=0,  # important: do not re-apply LoRA here
+        ds_config=None,
+        init_value_head=False,  # don't reinit head
+        value_head_prefix="score",
+        packing_samples=False,
     )
     base_tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
 
