@@ -21,7 +21,7 @@ def apply_lora(model_name_or_path, lora_path, output_path, is_rm, bf16):
         bf16=bf16,
         lora_rank=0,  # important: do not re-apply LoRA here
         ds_config=None,
-        init_value_head=False,  # don't reinit head
+        init_value_head=True,  # force reinitialize to [1, hidden_size]
         value_head_prefix="score",
         packing_samples=False,
     )
