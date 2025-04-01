@@ -101,9 +101,11 @@ def train(args):
 
     # charles: add simple inference
     import torch
-    prompt = "The cat sat on the mat and purred softly."
+    # prompt = "The cat sat on the mat and purred softly."
+    prompt = train_data[0]
     device = "cuda" if torch.cuda.is_available() else "cpu"
     inputs = tokenizer(prompt, return_tensors="pt").to(device)
+
     with torch.no_grad():
         reward = model(**inputs)
     print(f"Prompt = {prompt} Reward score: {reward.item():.4f}")
