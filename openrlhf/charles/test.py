@@ -100,6 +100,7 @@ def train(args):
     )
 
     # charles: add simple inference
+    import torch
     prompt = "The cat sat on the mat and purred softly."
     device = "cuda" if torch.cuda.is_available() else "cpu"
     inputs = tokenizer(prompt, return_tensors="pt").to(device)
