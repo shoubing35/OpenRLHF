@@ -108,7 +108,7 @@ def train(args):
 
     with torch.no_grad():
         reward = model(**inputs)
-    print(f"Prompt = {prompt} Reward score: {reward.item():.4f}")
+    print(f"Prompt = {prompt} \nReward score: {reward.item():.4f}")
 
 # charles: remove training code
 """
