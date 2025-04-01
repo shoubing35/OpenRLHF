@@ -1,7 +1,7 @@
 set -x
 
 read -r -d '' training_commands <<EOF
-openrlhf.cli.train_rm \
+openrlhf.charles.test \
    --save_path ./checkpoint/llama3-8b-rm \
    --save_steps -1 \
    --logging_steps 1 \
