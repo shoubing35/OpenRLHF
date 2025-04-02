@@ -13,7 +13,7 @@ openrlhf.cli.train_rm \
    --max_len 512 \
    --max_samples 10 \
    --zero_stage 2 \
-   --learning_rate 9e-6 \
+   --learning_rate 5e-5 \
    --dataset shoubing35/test \
    --chosen_key chosen \
    --rejected_key rejected \
