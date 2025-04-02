@@ -7,7 +7,7 @@ openrlhf.charles.test \
    --eval_steps -1 \
    --train_batch_size 1 \
    --micro_train_batch_size 1 \
-   --pretrain ./checkpoint/llama3-8b-rm \
+   --pretrain ./checkpoint/llama-3-8b-rm-combined \
    --max_epochs 1 \
    --max_len 512 \
    --max_samples 10 \
