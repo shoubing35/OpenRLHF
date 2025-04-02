@@ -102,13 +102,14 @@ def train(args):
     # charles: add simple inference
     import torch
     # prompt = "The cat sat on the mat and purred softly."
-    prompt = train_data[0]["chosen"]
-    device = "cuda" if torch.cuda.is_available() else "cpu"
-    inputs = tokenizer(prompt, return_tensors="pt").to(device)
 
-    with torch.no_grad():
-        reward = model(**inputs)
-    print(f"Prompt = {prompt} \nReward score: {reward.item():.4f}")
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    for i in ["chosen", "rejected"]:
+        prompt = train_data[0][i]
+        inputs = tokenizer(prompt, return_tensors="pt").to(device)
+        with torch.no_grad():
+            reward = model(**inputs)
+        print(f"{i} = {prompt} \nReward score: {reward.item():.4f}")
 
 # charles: remove training code
 """
