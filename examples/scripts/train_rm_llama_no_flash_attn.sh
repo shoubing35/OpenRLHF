@@ -14,8 +14,7 @@ openrlhf.cli.train_rm \
    --max_samples 10 \
    --zero_stage 2 \
    --learning_rate 9e-6 \
-   --dataset OpenRLHF/preference_dataset_mixture2_and_safe_pku \
-   --apply_chat_template \
+   --dataset shoubing35/test \
    --chosen_key chosen \
    --rejected_key rejected \
    --load_checkpoint \
